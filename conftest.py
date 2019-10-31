@@ -9,10 +9,10 @@ def pytest_addoption(parser): # Обработчик функции language
 def browser(request):
     language = request.config.getoption("language")
     if language:
-        options = Options() # Создаем опцию
-        options.add_experimental_option('prefs', {'intl.accept_languages': language}) # Добавляем в нее выбор языка
+        options = Options()
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
         print('\n- Запуск браузера -') 
-        browser = webdriver.Chrome(options=options) # Запускаем Chrome с этой опцией
+        browser = webdriver.Chrome(options=options)
     else:
         raise pytest.UsageError("--language=[Введите язык]")
     yield browser
