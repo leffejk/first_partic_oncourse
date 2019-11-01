@@ -10,3 +10,11 @@ class LoginPageLocators:
 
 	LOG_EMAIL = (By.CSS_SELECTOR, "#id_login-username")
 	LOG_PASS = (By.CSS_SELECTOR, "#id_login-password")
+
+class ProductPageLocators:
+	ADD_TO_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
+	MESSAGE_ADD = (By.CSS_SELECTOR, r".alertinner > strong")
+	PRODUCT_NAME = (By.CSS_SELECTOR, ".col-sm-6.product_main > h1")
+	MESSAGE_PRODUCT_NAME = (By.CSS_SELECTOR, ".alertinner > strong")
+	PRICE_PRODUCT = (By.CSS_SELECTOR, r'.col-sm-6.product_main > .price_color')
+	PRICE_MESSAGE = (By.CSS_SELECTOR, r'[class="alert alert-safe alert-noicon alert-info  fade in"] > .alertinner > p > strong')

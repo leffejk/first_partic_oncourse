@@ -11,10 +11,8 @@ def browser(request):
     if language:
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': language})
-        print('\n- Запуск браузера -') 
         browser = webdriver.Chrome(options=options)
     else:
         raise pytest.UsageError("--language=[Введите язык]")
     yield browser
-    print('\n- Закрытие браузера -')
     browser.quit()
