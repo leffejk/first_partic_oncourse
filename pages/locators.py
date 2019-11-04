@@ -3,6 +3,11 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
 	LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
 
+class BasketLocators:
+	BASKET_ELEMENT = (By.CSS_SELECTOR, '.btn-group > a.btn')
+	BASKET_CLEAR_ELEMENT = (By.CSS_SELECTOR, '#content_inner > p')
+	BASKET_PRODUCTS = (By.CSS_SELECTOR, '.col-sm-6.h3')
+
 class LoginPageLocators:
 	REG_EMAIL_INPUT = (By.CSS_SELECTOR, '#id_registration-email')
 	REG_PASS1_INPUT = (By.CSS_SELECTOR, '#id_registration-password1')
@@ -18,3 +23,7 @@ class ProductPageLocators:
 	MESSAGE_PRODUCT_NAME = (By.CSS_SELECTOR, ".alertinner > strong")
 	PRICE_PRODUCT = (By.CSS_SELECTOR, r'.col-sm-6.product_main > .price_color')
 	PRICE_MESSAGE = (By.CSS_SELECTOR, r'[class="alert alert-safe alert-noicon alert-info  fade in"] > .alertinner > p > strong')
+
+class BasePageLocators:
+	LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+	LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "login_link_inc")
