@@ -59,14 +59,19 @@ class BasePage:
         return False
 
     def go_to_basket(self):
+        '''Переход в корзину'''
         self.browser.find_element(*BasketLocators.BASKET_ELEMENT).click()
 
     def go_to_login_page(self):
         '''Переход на страницу логина'''
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
-        link.click()
+        self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
 
     def should_be_login_link(self):
         '''Проверка на присутствие элемента для перехода на страницу логина'''
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def should_be_authorized_user(self):
+        '''Проверка того, что пользователь залогинен'''
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
 

@@ -2,6 +2,59 @@ from .pages.product_page import ProductPage
 from .pages.locators import ProductPageLocators
 import pytest
 from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
+import time
+
+
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        page = LoginPage(browser, 'http://selenium1py.pythonanywhere.com/')
+        page.open()
+        page.go_to_login_page()
+        email = str(time.time()) + "@fakemail.org"
+        page.register_new_user(email, "qq11ww22ee33")
+        page.should_be_authorized_user()
+
+
+    def test_user_cant_see_success_message(self, browser):
+        '''
+        Открываем страницу товара
+        Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+        '''
+        link = r"http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+        page = ProductPage(browser, link)
+        page.open()
+        assert page.is_not_element_present(*ProductPageLocators.MESSAGE_ADD), 'Элемент присутствует на странице.'
+
+    def test_user_can_add_product_to_basket(self, browser, link):
+        try:
+            page = ProductPage(browser, r"http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/")
+            page.open()
+            page.add_to_basket()
+            page.solve_quiz_and_get_code()
+            page.message_stating_that_the_item_has_been_added_to_the_cart()
+            page.product_name_matches_the_name_in_the_message()
+            page.price_check()
+        except:
+            assert False, f"ОШИБКА: {link}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = r'http://selenium1py.pythonanywhere.com/'
