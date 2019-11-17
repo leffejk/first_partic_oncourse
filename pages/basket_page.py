@@ -2,7 +2,7 @@ from .base_page import BasePage
 from .locators import BasketLocators
 
 class BasketPage(BasePage):
-    def clear_cart_chech(self):
+    def check_clear_cart(self):
         '''Проверка, пустая ли корзина'''
         assert self.is_element_present(*BasketLocators.BASKET_CLEAR_ELEMENT), "Корзина не пуста"
 

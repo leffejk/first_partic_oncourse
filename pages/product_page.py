@@ -2,6 +2,14 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
+    def check_that_there_is_no_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ADD), 'Элемент присутствует на странице.'
+
+
+    def verify_that_there_is_no_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ADD), "Элемент не исчезает"
+
+
 
     def add_to_basket(self):
         '''Add To Basket'''
